@@ -10,19 +10,24 @@ The user stands in an open-air space observatory under a starry sky. On a consol
 
 ## Requirements
 
-- **Unity 6000.6.3f1** (Unity 6)
+- **Unity 6000.6.3f1** (Unity 6) with **Android Build Support** (for Meta Quest)
 - Universal Render Pipeline (URP)
 - XR Interaction Toolkit 3.6.1 (with *Starter Assets*, *Hands Interaction Demo* and *XR Interaction Simulator* samples)
 - XR Hands (with the *HandVisualizer* sample)
-- XR Plug-in Management / OpenXR
+- OpenXR (Meta Quest Support, Hand Tracking Subsystem and Meta Hand Tracking Aim enabled for Android)
 
 ## How to run
 
+### In the Unity editor
+
 1. Open the project folder in Unity Hub (**Add → Add project from disk**) using Unity 6000.6.3f1.
 2. Open the scene `Assets/Scenes/Main.unity`.
-3. Press **Play**.
-   - **Without a headset:** the XR Interaction Simulator is in the scene. Press **Y** in the Game view to show its controls.
-   - **With a Meta Quest:** build for Android with OpenXR enabled, or install the `.apk` from the Releases page.
+3. Press **Play**. The XR Interaction Simulator is in the scene; press **Y** in the Game view to show its controls.
+
+### On a Meta Quest
+
+- **Ready-made build:** download `SpaceObservatory.apk` from the [Releases](../../releases) page and install it on a Quest in developer mode (for example with Meta Quest Developer Hub or SideQuest). It appears under *Library → Unknown Sources*.
+- **Build it yourself:** in **File → Build Profiles**, select the **Meta Quest** profile and press **Build**.
 
 ## Controls
 
@@ -33,7 +38,7 @@ The user stands in an open-air space observatory under a starry sky. On a consol
 | Choose a planet from a distance | Aim the ray and press the **trigger** | Point at it and pinch | **T** (controllers) or **M** (hands, pinch) |
 | Pause / resume the video | Choose the same planet again | Choose the same planet again | Same |
 
-The rig switches automatically between controllers and hands.
+The rig switches automatically between controllers and hands. The experience is designed to be used standing.
 
 ## Project structure
 
@@ -48,7 +53,9 @@ Assets/
 │   ├── Planetas/            Earth, Moon and Mars textures
 │   ├── Estrelas.png         Starfield sky (equirectangular)
 │   └── RT_Screen            Render texture the video player draws into
-└── Videos/                  NASA videos (terra.mp4, lua.mp4, marte.mp4)
+├── Videos/                  NASA videos (terra.mp4, lua.mp4, marte.mp4)
+├── Settings/Build Profiles/ Meta Quest build profile
+└── XR/                      XR Plug-in Management and OpenXR settings
 Screenshots/                 Images used in this README
 ```
 
