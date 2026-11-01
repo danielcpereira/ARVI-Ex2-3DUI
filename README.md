@@ -4,7 +4,7 @@ Exercise #2 for Interactive Virtual Environments 2026-27
 
 | Controllers | Hand tracking |
 |---|---|
-| ![Selecting Mars with a controller](Screenshots/VRcontrollers.png) | ![Selecting Earth with a pinch gesture](Screenshots/handTracking.png) |
+| ![Selecting Mars with a controller](Screenshots/controllers.png) | ![Selecting Earth with a pinch gesture](Screenshots/hand-tracking.png) |
 
 The user stands in an open-air space observatory under a starry sky. On a console in front of them sit three small planets: **Earth**, **Moon** and **Mars**. Choosing a planet plays a short NASA video about it on a large screen, with sound coming from the screen.
 
@@ -30,7 +30,7 @@ The user stands in an open-air space observatory under a starry sky. On a consol
 |---|---|---|---|
 | Look around | Move your head | Move your head | Mouse (see **Y** panel) |
 | Choose a planet up close | — | Touch it with your index finger (poke) | Hands mode, **N** (poke) |
-| Choose a planet from a distance | Aim the ray and press **grip** | Point at it and pinch | **G** (controllers) or **M** (hands, pinch) |
+| Choose a planet from a distance | Aim the ray and press the **trigger** | Point at it and pinch | **T** (controllers) or **M** (hands, pinch) |
 | Pause / resume the video | Choose the same planet again | Choose the same planet again | Same |
 
 The rig switches automatically between controllers and hands.
