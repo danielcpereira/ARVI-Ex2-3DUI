@@ -4,41 +4,64 @@ Exercise #2 for Interactive Virtual Environments 2026-27
 
 | Controllers | Hand tracking |
 |---|---|
-| ![Selecting Mars with a controller](Screenshots/VRcontrollers.png) | ![Selecting Earth with a pinch gesture](Screenshots/handTracking.png) |
+| ![Controllers](Screenshots/VRcontrollers.png) | ![Hand tracking](Screenshots/handTracking.png) |
 
-The user stands in an open-air space observatory under a starry sky. On a console in front of them sit three small planets: **Earth**, **Moon** and **Mars**. Choosing a planet plays a short NASA video about it on a large screen, with sound coming from the screen.
+## What is implemented
+
+A space observatory with a console and a screen. The console has three planets (Earth, Moon and Mars). Selecting a planet plays a NASA video about it on the screen.
+
+- Each planet works as a button.
+- Button states:
+  - Idle: the planet is still.
+  - Hover: the planet grows, rotates and plays a sound.
+  - Pressed: the planet moves down and plays a click.
+  - Selected: a ring appears around the base and the planet keeps rotating.
+- Only one planet can be selected at a time. Selecting the same planet again pauses or resumes the video.
+- The video sound comes from the screen (3D audio).
+- The console light dims while a video is playing.
+- Works with controllers and with hand tracking.
+- Locomotion is disabled, since everything is within reach of the user.
 
 ## Requirements
 
-- **Unity 6000.6.3f1** (Unity 6) with **Android Build Support** (for Meta Quest)
+- Unity 6000.6.3f1 (with Android Build Support for Meta Quest)
 - Universal Render Pipeline (URP)
-- XR Interaction Toolkit 3.6.1 (with *Starter Assets*, *Hands Interaction Demo* and *XR Interaction Simulator* samples)
-- XR Hands (with the *HandVisualizer* sample)
-- OpenXR (Meta Quest Support, Hand Tracking Subsystem and Meta Hand Tracking Aim enabled for Android)
+- XR Interaction Toolkit 3.6.1
+- XR Hands
+- OpenXR
 
-## How to run
+## How to install and use
 
-### In the Unity editor
+### Unity editor
 
-1. Open the project folder in Unity Hub (**Add → Add project from disk**) using Unity 6000.6.3f1.
-2. Open the scene `Assets/Scenes/Main.unity`.
-3. Press **Play**. The XR Interaction Simulator is in the scene; press **Y** in the Game view to show its controls.
+1. Open the project in Unity Hub (Add → Add project from disk).
+2. Open `Assets/Scenes/Main.unity`.
+3. Press Play. The scene uses the XR Interaction Simulator (press Y to see its controls).
 
-### On a Meta Quest
+### Meta Quest
 
-- **Ready-made build:** download `SpaceObservatory.apk` from the [Releases](../../releases) page and install it on a Quest in developer mode (for example with Meta Quest Developer Hub or SideQuest). It appears under *Library → Unknown Sources*.
-- **Build it yourself:** in **File → Build Profiles**, select the **Meta Quest** profile and press **Build**.
+- Download `SpaceObservatory.apk` from [Releases](../../releases) and install it on a Quest in developer mode (Meta Quest Developer Hub or SideQuest).
+- Or build it in File → Build Profiles → Meta Quest → Build.
 
 ## Controls
 
-| Action | VR controllers | Hand tracking | Simulator |
-|---|---|---|---|
-| Look around | Move your head | Move your head | Mouse (see **Y** panel) |
-| Choose a planet up close | — | Touch it with your index finger (poke) | Hands mode, **N** (poke) |
-| Choose a planet from a distance | Aim the ray and press the **trigger** | Point at it and pinch | **T** (controllers) or **M** (hands, pinch) |
-| Pause / resume the video | Choose the same planet again | Choose the same planet again | Same |
+### Controllers
 
-The rig switches automatically between controllers and hands. The experience is designed to be used standing.
+- Point the ray at a planet and press the trigger to select it.
+- Select the same planet again to pause or resume the video.
+
+### Hand tracking
+
+- Push a planet down with the index finger (poke).
+- Or point at a planet and pinch.
+
+### Simulator
+
+- Y: show the simulator controls.
+- Mouse, W/A/S/D and Q/E: move the head or device.
+- T: trigger (controllers).
+- ] twice: switch the right device to a hand.
+- N: poke pose. M: pinch.
 
 ## Project structure
 
@@ -46,20 +69,15 @@ The rig switches automatically between controllers and hands. The experience is 
 Assets/
 ├── Scenes/Main.unity        Main scene
 ├── Scripts/
-│   ├── PlanetButton.cs      Button states and feedback for each planet
-│   └── VideoScreen.cs       Plays the chosen video, keeps one selection, dims the light
-├── Materials/               Room, console, screen and planet materials
-├── Textures/
-│   ├── Planetas/            Earth, Moon and Mars textures
-│   ├── Estrelas.png         Starfield sky (equirectangular)
-│   └── RT_Screen            Render texture the video player draws into
-├── Videos/                  NASA videos (terra.mp4, lua.mp4, marte.mp4)
+│   ├── PlanetButton.cs      Button states and feedback
+│   └── VideoScreen.cs       Video playback and console light
+├── Materials/               Materials
+├── Textures/                Planet textures, sky and screen render texture
+├── Videos/                  NASA videos
 ├── Settings/Build Profiles/ Meta Quest build profile
-└── XR/                      XR Plug-in Management and OpenXR settings
-Screenshots/                 Images used in this README
+└── XR/                      OpenXR settings
+Screenshots/                 README images
 ```
-
-The scene layout, materials, video assignments and event connections are all set up in the Unity editor. The Interactable events (Hover Entered/Exited, Select Entered/Exited) are connected to `PlanetButton` in the Inspector, so the wiring is visible without reading code. The scripts only handle behaviour: button feedback and video playback.
 
 ## Credits
 
